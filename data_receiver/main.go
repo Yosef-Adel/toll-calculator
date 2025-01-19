@@ -9,8 +9,6 @@ import (
 	"github.com/yosef-adel/toll-calculator/types"
 )
 
-const kafkaTopic = "obuData"
-
 func main() {
 	recv, err := NewDataReceiver()
 	if err != nil {
@@ -28,10 +26,16 @@ type DataReceiver struct {
 }
 
 func NewDataReceiver() (*DataReceiver, error) {
-	p, err := NewKafkaProducer()
+	var (
+		p          DataProducer
+		err        error
+		kafkaTopic = "obuData"
+	)
+	p, err = NewKafkaProducer(kafkaTopic)
 	if err != nil {
 		return nil, err
 	}
+	p = NewLogMiddleware(p)
 
 	return &DataReceiver{
 		msgch: make(chan types.OBUData, 128),
