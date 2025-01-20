@@ -6,6 +6,9 @@ receiver:
 	@go build -o bin/receiver ./data_receiver
 	@./bin/receiver
 
+calc:
+	@go build -o bin/calc ./distance_calculator
+	@./bin/calc
 
 .PHONY: obu
 
