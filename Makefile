@@ -10,5 +10,9 @@ calc:
 	@go build -o bin/calc ./distance_calculator
 	@./bin/calc
 
-.PHONY: obu
+agg:
+	@go build -o bin/aggregator ./aggregator
+	@./bin/aggregator
+
+.PHONY: obu invoicer
 
