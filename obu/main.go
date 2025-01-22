@@ -11,7 +11,7 @@ import (
 	"github.com/yosef-adel/toll-calculator/types"
 )
 
-var sendInterval = time.Second * 10
+var sendInterval = time.Second * 5
 
 const wsEndpoint = "ws://localhost:30000/ws"
 
